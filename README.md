@@ -1,185 +1,259 @@
-# Dental Clinic Dashboard
+# Dental Clinic Management System
 
-A modern, responsive web application for dental clinic management built with Laravel 12, Jetstream, Livewire, and Tailwind CSS.
+A comprehensive web-based management system for dental clinics built with Laravel, featuring role-based access control, inventory management, sales tracking, and user management.
 
-## Features
+## 🚀 Features
 
-### 🏥 **Dashboard**
-- Real-time statistics and metrics
-- Monthly sales charts
-- Recent sales overview
-- Low stock product alerts
-- Revenue and profit tracking
+### 🔐 Authentication & Authorization
+- **Role-based Access Control**: Administrator and Staff roles
+- **Email Verification**: Secure user registration with email verification
+- **Two-Factor Authentication**: Enhanced security with 2FA support
+- **Password Reset**: Secure password recovery system
 
-### 📦 **Inventory Management**
-- Complete CRUD operations for products
-- Product categories (Dental Supplies, Medications, Equipment, Consumables)
-- Stock level monitoring with alerts
-- Expiry date tracking
-- SKU management
-- Cost and price tracking
+### 📊 Dashboard
+- **Role-specific Dashboards**: Different views for administrators and staff
+- **Real-time Statistics**: Sales, inventory, and user analytics
+- **Interactive Charts**: Visual representation of data trends
+- **Filter Controls**: Date range filtering for analytics (Admin only)
 
-### 💰 **Sales Management**
-- Create and manage sales transactions
-- Multiple payment methods (Cash, Card, Transfer)
-- Invoice generation with unique numbers
-- Sales history and reporting
-- Profit calculation
+### 🏥 Core Management Features
 
-### 👥 **User Management**
-- Role-based access control
-- Administrator role (full access)
-- Staff role (inventory management only)
-- Secure authentication with Jetstream
+#### Inventory Management
+- **Product Management**: Add, edit, delete products with categories
+- **Stock Tracking**: Real-time inventory levels and low stock alerts
+- **Category Management**: Organize products by categories
+- **SKU Management**: Unique product identification
 
-### 🎨 **Modern UI/UX**
-- Responsive design with Tailwind CSS
-- Clean and professional interface
-- Mobile-friendly navigation
-- Real-time data updates with Livewire
+#### Sales Management
+- **Sales Processing**: Create and manage sales transactions
+- **Invoice Generation**: Automatic invoice numbering
+- **Payment Methods**: Support for cash, card, and transfer payments
+- **Sales History**: Complete transaction history and reporting
 
-## Requirements
+#### User Management (Admin Only)
+- **User CRUD**: Create, read, update, delete users
+- **Role Assignment**: Assign administrator or staff roles
+- **Email Verification**: Manage user verification status
+- **User Analytics**: User activity and performance metrics
 
-- PHP 8.2 or higher
-- MySQL 5.7 or higher
+### 🔍 Advanced Features
+- **Global Search**: AJAX-powered search across all entities
+- **Modern UI**: Beautiful, responsive interface with Tailwind CSS
+- **Real-time Updates**: Live data updates without page refresh
+- **Export Capabilities**: Data export functionality
+- **Mobile Responsive**: Works seamlessly on all devices
+
+## 🛠️ Technology Stack
+
+- **Backend**: Laravel 11 (PHP 8.3+)
+- **Frontend**: Blade Templates, Tailwind CSS, Alpine.js
+- **Database**: MySQL/PostgreSQL
+- **Authentication**: Laravel Fortify & Jetstream
+- **Email**: Laravel Mail with customizable notifications
+- **Build Tool**: Vite
+
+## 📋 Requirements
+
+- PHP 8.3 or higher
 - Composer
-- Node.js and NPM
+- Node.js & NPM
+- MySQL 8.0+ or PostgreSQL 13+
+- Web server (Apache/Nginx)
 
-## Installation
+## 🚀 Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd dental-clinic
-   ```
+### 1. Clone the Repository
+```bash
+git clone https://github.com/yourusername/dental-clinic-management.git
+cd dental-clinic-management
+```
 
-2. **Install PHP dependencies**
-   ```bash
-   composer install
-   ```
+### 2. Install Dependencies
+```bash
+composer install
+npm install
+```
 
-3. **Install Node.js dependencies**
-   ```bash
-   npm install
-   ```
+### 3. Environment Setup
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-4. **Environment setup**
-   ```bash
-   cp .env.example .env
-   php artisan key:generate
-   ```
+### 4. Configure Database
+Edit `.env` file with your database credentials:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=dental_clinic
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
 
-5. **Configure database**
-   Edit `.env` file and set your database credentials:
-   ```env
-   DB_CONNECTION=mysql
-   DB_HOST=127.0.0.1
-   DB_PORT=3306
-   DB_DATABASE=dental_clinic
-   DB_USERNAME=your_username
-   DB_PASSWORD=your_password
-   ```
+### 5. Run Migrations and Seeders
+```bash
+php artisan migrate
+php artisan db:seed
+```
 
-6. **Run migrations**
-   ```bash
-   php artisan migrate
-   ```
+### 6. Build Assets
+```bash
+npm run build
+```
 
-7. **Seed the database with sample data**
-   ```bash
-   php artisan db:seed --class=DentalClinicSeeder
-   ```
+### 7. Set Up Storage
+```bash
+php artisan storage:link
+```
 
-8. **Build assets**
-   ```bash
-   npm run build
-   ```
+### 8. Configure Email (Optional)
+For email verification, configure your email settings in `.env`:
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=your_smtp_host
+MAIL_PORT=587
+MAIL_USERNAME=your_email
+MAIL_PASSWORD=your_password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=your_email
+MAIL_FROM_NAME="${APP_NAME}"
+```
 
-9. **Start the development server**
-   ```bash
-   php artisan serve
-   ```
+### 9. Start the Application
+```bash
+php artisan serve
+```
 
-## Default Users
+Visit `http://localhost:8000` in your browser.
 
-After running the seeder, you can log in with these credentials:
+## 👥 Default Users
+
+After running the seeders, you'll have these default users:
 
 ### Administrator
-- **Email:** admin@dentalclinic.com
-- **Password:** password
-- **Permissions:** Full access to all features
+- **Email**: admin@dentalclinic.com
+- **Password**: password
+- **Role**: Administrator
 
 ### Staff Member
-- **Email:** staff@dentalclinic.com
-- **Password:** password
-- **Permissions:** Inventory management only
+- **Email**: staff@dentalclinic.com
+- **Password**: password
+- **Role**: Staff
 
-## Usage
+## 🔧 Usage
 
-### Dashboard
-- View real-time statistics
-- Monitor sales performance
-- Check low stock alerts
-- Review recent transactions
+### Administrator Access
+Administrators have full access to:
+- User management
+- Sales analytics and reporting
+- Revenue tracking
+- System configuration
+- All staff features
 
-### Inventory Management
-1. Navigate to "Inventory" in the main menu
-2. Click "Add Product" to create new items
-3. Use the table to view, edit, or delete products
-4. Monitor stock levels and expiry dates
+### Staff Access
+Staff members can:
+- Manage inventory (products and categories)
+- Process sales transactions
+- View low stock alerts
+- Search across products and categories
+- Access basic dashboard statistics
 
-### Sales Management
-1. Navigate to "Sales" in the main menu
-2. Click "New Sale" to create a transaction
-3. Select products and quantities
-4. Choose payment method
-5. Complete the sale
+### Key Features Usage
 
-## Database Structure
+#### Adding Products
+1. Navigate to **Inventory** → **Add Product**
+2. Fill in product details (name, category, quantity, price, etc.)
+3. Save the product
 
-### Tables
-- `users` - User accounts with roles
-- `products` - Inventory items
-- `sales` - Sales transactions
-- `sale_items` - Individual items in sales
+#### Processing Sales
+1. Go to **Sales** → **New Sale**
+2. Select products and quantities
+3. Choose payment method
+4. Complete the transaction
 
-### Key Features
-- Automatic invoice number generation
-- Stock level tracking
-- Profit margin calculations
-- Expiry date monitoring
+#### Managing Categories
+1. Navigate to **Categories**
+2. Add, edit, or delete categories
+3. Categories with products cannot be deleted
 
-## Customization
+#### User Management (Admin Only)
+1. Go to **Users** (visible only to administrators)
+2. Create new users with appropriate roles
+3. Manage user verification status
 
-### Adding New Product Categories
-Edit the `create.blade.php` view to add new categories to the dropdown.
+## 🔒 Security Features
 
-### Modifying User Roles
-Update the `User` model and migration to add new roles.
+- **CSRF Protection**: All forms are protected against CSRF attacks
+- **SQL Injection Prevention**: Laravel's Eloquent ORM prevents SQL injection
+- **XSS Protection**: Blade templating engine provides XSS protection
+- **Role-based Access**: Strict role-based access control
+- **Email Verification**: Required for all new user accounts
+- **Password Hashing**: Secure password storage using bcrypt
 
-### Styling
-The application uses Tailwind CSS. Modify the classes in the Blade templates to customize the appearance.
+## 📁 Project Structure
 
-## Security Features
+```
+dental-clinic/
+├── app/
+│   ├── Console/Commands/     # Custom Artisan commands
+│   ├── Http/Controllers/     # Application controllers
+│   ├── Models/              # Eloquent models
+│   ├── Notifications/       # Email notifications
+│   └── Providers/           # Service providers
+├── database/
+│   ├── migrations/          # Database migrations
+│   └── seeders/            # Database seeders
+├── resources/
+│   ├── views/              # Blade templates
+│   ├── css/               # Stylesheets
+│   └── js/                # JavaScript files
+├── routes/                 # Application routes
+└── storage/               # File storage
+```
 
-- CSRF protection
-- SQL injection prevention
-- XSS protection
-- Role-based access control
-- Secure password hashing
-- Session management
+## 🧪 Testing
 
-## Contributing
+Run the test suite:
+```bash
+php artisan test
+```
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## License
+## 📝 License
 
 This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-## Support
+## 🤝 Contributing
 
-For support and questions, please contact the development team or create an issue in the repository.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📞 Support
+
+For support and questions:
+- Create an issue on GitHub
+- Email: support@dentalclinic.com
+
+## 🔄 Updates
+
+To update the application:
+```bash
+git pull origin main
+composer install
+php artisan migrate
+npm run build
+```
+
+## 📊 System Requirements
+
+- **PHP**: 8.3+
+- **Memory**: 512MB RAM minimum
+- **Storage**: 1GB free space
+- **Database**: MySQL 8.0+ or PostgreSQL 13+
+
+---
+
+**Built with ❤️ using Laravel**
